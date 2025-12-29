@@ -82,9 +82,10 @@ class SSHCli:
         :return bool: True if login was successful, False otherwise
         """
 
-        if "DSA PRIVATE KEY" in priv_key:
-            priv_key = paramiko.DSSKey.from_private_key(io.StringIO(priv_key))
-        elif "RSA PRIVATE KEY" in priv_key:
+        # TODO: Add support for DSA keys
+        # if "DSA PRIVATE KEY" in priv_key:
+        #     priv_key = paramiko.DSSKey.from_private_key(io.StringIO(priv_key))
+        if "RSA PRIVATE KEY" in priv_key:
             priv_key = paramiko.RSAKey.from_private_key(io.StringIO(priv_key))
         else:
             return False
